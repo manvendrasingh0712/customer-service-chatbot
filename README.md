@@ -46,6 +46,10 @@ design principles.
 | **Domain** | E-commerce / customer support (orders, refunds, shipping, payments) |
 
 ---
+## user-interface
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/efcd505f-538b-45d2-b72c-6b70e1beaa4e" />
+
+
 
 ## ⚙️ How It Works (NLP Pipeline)
 
