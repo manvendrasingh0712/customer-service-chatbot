@@ -240,3 +240,4 @@ if user_message:
     except Exception as e:
         logger.error("Error handling message %r: %s", cleaned_message, e)
         st.error("Sorry, I encountered an issue while processing your request. Please try again.")
+        
