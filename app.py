@@ -93,7 +93,9 @@ def generate_audio_bytes(text: str):
                 try:
                     os.remove(temp_path)
                 except OSError as cleanup_error:
-                    logger.warning("Could not remove temp file %s: %s", temp_path, cleanup_error)
+                    logger.warning(
+                        "Could not remove temp file %s: %s", temp_path, cleanup_error
+                    )
 
 
 # ---------------- Page Config ---------------- #
@@ -122,7 +124,9 @@ if "bot" not in st.session_state:
         st.session_state.bot = load_bot()
     except Exception as e:
         logger.error("Failed to load Chatbot: %s", e)
-        st.error("⚠️ System error: Chatbot failed to initialize. Please refresh the page.")
+        st.error(
+            "⚠️ System error: Chatbot failed to initialize. Please refresh the page."
+        )
         st.stop()
 
 if "last_msg_time" not in st.session_state:
@@ -190,7 +194,9 @@ if user_message:
 
     # 2. Length Guard (prevents oversized TTS/model calls from freezing the app)
     if len(cleaned_message) > MAX_MESSAGE_LENGTH:
-        st.warning(f"Message too long. Please keep it under {MAX_MESSAGE_LENGTH} characters.")
+        st.warning(
+            f"Message too long. Please keep it under {MAX_MESSAGE_LENGTH} characters."
+        )
         st.stop()
 
     # 3. Rate Limiting to prevent spam / accidental DoS
@@ -225,18 +231,24 @@ if user_message:
                 st.caption("⚠️ Voice reply unavailable for this message.")
 
         # Save to session memory
-        st.session_state.messages.append({
-            "user": cleaned_message,
-            "bot": response,
-            "audio": audio_data,
-        })
+        st.session_state.messages.append(
+            {
+                "user": cleaned_message,
+                "bot": response,
+                "audio": audio_data,
+            }
+        )
 
         # RAM Leak Prevention: Truncate history
         if len(st.session_state.messages) > HISTORY_LIMIT:
             st.session_state.messages = st.session_state.messages[-HISTORY_LIMIT:]
 
-        logger.info("Interaction success - User: %r | Bot: %r", cleaned_message, response)
+        logger.info(
+            "Interaction success - User: %r | Bot: %r", cleaned_message, response
+        )
 
     except Exception as e:
         logger.error("Error handling message %r: %s", cleaned_message, e)
-        st.error("Sorry, I encountered an issue while processing your request. Please try again.")
+        st.error(
+            "Sorry, I encountered an issue while processing your request. Please try again."
+        )

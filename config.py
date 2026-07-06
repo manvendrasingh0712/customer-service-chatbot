@@ -20,9 +20,9 @@ INTENTS_PATH: Path = BASE_DIR / "intents.json"
 # ---------------------------------------------------------------- #
 # Chat behaviour
 # ---------------------------------------------------------------- #
-HISTORY_LIMIT: int = 20          # Max messages kept in memory per session
+HISTORY_LIMIT: int = 20  # Max messages kept in memory per session
 RATE_LIMIT_SECONDS: float = 1.5  # Minimum gap between two user messages
-MAX_MESSAGE_LENGTH: int = 500    # Prevents oversized inputs from causing lag
+MAX_MESSAGE_LENGTH: int = 500  # Prevents oversized inputs from causing lag
 
 # ---------------------------------------------------------------- #
 # NLP engine (TF-IDF + Cosine Similarity)

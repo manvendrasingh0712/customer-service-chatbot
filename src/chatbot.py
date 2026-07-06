@@ -42,11 +42,58 @@ logger = logging.getLogger(__name__)
 # A small, hand-picked stopword list keeps this dependency-free (no NLTK
 # downloads required) while still removing common noise words.
 STOPWORDS: set[str] = {
-    "a", "an", "the", "is", "are", "am", "was", "were", "be", "been", "being",
-    "i", "you", "he", "she", "it", "we", "they", "me", "him", "her", "us", "them",
-    "my", "your", "his", "its", "our", "their", "to", "of", "in", "on", "at",
-    "for", "with", "about", "do", "does", "did", "can", "could", "will",
-    "would", "should", "please", "and", "or", "but", "so", "this", "that",
+    "a",
+    "an",
+    "the",
+    "is",
+    "are",
+    "am",
+    "was",
+    "were",
+    "be",
+    "been",
+    "being",
+    "i",
+    "you",
+    "he",
+    "she",
+    "it",
+    "we",
+    "they",
+    "me",
+    "him",
+    "her",
+    "us",
+    "them",
+    "my",
+    "your",
+    "his",
+    "its",
+    "our",
+    "their",
+    "to",
+    "of",
+    "in",
+    "on",
+    "at",
+    "for",
+    "with",
+    "about",
+    "do",
+    "does",
+    "did",
+    "can",
+    "could",
+    "will",
+    "would",
+    "should",
+    "please",
+    "and",
+    "or",
+    "but",
+    "so",
+    "this",
+    "that",
 }
 
 
@@ -80,7 +127,8 @@ class Chatbot:
 
         logger.info(
             "Chatbot initialized with %d intents and %d training patterns.",
-            len(self.intents), len(self.patterns),
+            len(self.intents),
+            len(self.patterns),
         )
 
     # ---------------------------------------------------------- #
@@ -147,7 +195,9 @@ class Chatbot:
 
             logger.info(
                 "Input: %r -> Best match tag: %s (score=%.2f)",
-                user_input, best_tag, best_score,
+                user_input,
+                best_tag,
+                best_score,
             )
 
             return best_tag if best_score >= CONFIDENCE_THRESHOLD else "fallback"

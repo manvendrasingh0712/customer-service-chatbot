@@ -57,7 +57,9 @@ def test_fallback_intent_exists():
     with open(INTENTS_PATH, "r", encoding="utf-8") as f:
         data = json.load(f)
     tags = [intent["tag"] for intent in data["intents"]]
-    assert "fallback" in tags, "A 'fallback' intent is required for graceful degradation"
+    assert (
+        "fallback" in tags
+    ), "A 'fallback' intent is required for graceful degradation"
 
 
 # ---------------------------------------------------------------- #
@@ -95,9 +97,9 @@ def test_chatbot_raises_on_missing_file():
 )
 def test_relevant_queries_match_expected_intent(bot: Chatbot, user_input, expected_tag):
     matched_tag = bot.get_intent_tag(user_input)
-    assert matched_tag == expected_tag, (
-        f"Expected intent {expected_tag!r} for {user_input!r}, got {matched_tag!r}"
-    )
+    assert (
+        matched_tag == expected_tag
+    ), f"Expected intent {expected_tag!r} for {user_input!r}, got {matched_tag!r}"
 
 
 def test_gibberish_input_triggers_fallback(bot: Chatbot):
