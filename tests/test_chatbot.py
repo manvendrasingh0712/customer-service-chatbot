@@ -129,4 +129,3 @@ def test_response_is_always_a_non_empty_string(bot: Chatbot):
         response = bot.get_response(query)
         assert isinstance(response, str)
         assert response.strip() != ""
-        
